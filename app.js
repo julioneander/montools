@@ -41,5 +41,21 @@ app.get('/cpu', function(req, res) {
   res.json(usage);
 });
 
+/**
+ * Gets memory stats
+ */
+app.get('/mem', function(req, res) {
+  var free = os.freemem(),
+      total = os.totalmem();
+
+  res.json({
+    free: free,
+    total: total
+  });
+});
+
+app.use(function(req, res) {
+});
+
 app.listen(1337);
 console.log('Listening on port 1337');
